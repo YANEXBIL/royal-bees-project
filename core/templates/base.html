@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ROYAL BEES SCHOOLS{% endblock %}</title>
+
+    {% load static %}
+<link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    {# Add external CSS frameworks like Bootstrap and Font Awesome here #}
+    {# Ensure these URLs are correct for the versions you want to use #}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {# Optional: Google Fonts for Poppins and Montserrat (used in style.css) #}
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    {% block head_extra %}{% endblock %} {# Placeholder for page-specific CSS (e.g., Lightbox CSS) #}
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-logo-container">
+            {# Make sure 'school_logo.png' exists in core/static/core/images/ #}
+            <img src="{% static 'core/images/school_logo.png' %}" alt="School Logo" class="header-logo-img">
+<h1 class="site-title-link">ROYAL BEES SCHOOLS</h1>
+        </div>
+
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}">About Us</a></li>
+                <li class="nav-item"><a href="{% url 'academics_overview' %}">Academics</a></li>
+                <li class="nav-item"><a href="{% url 'admissions' %}">Admissions</a></li>
+                <li class="nav-item"><a href="{% url 'news_list' %}">News</a></li>
+                <li class="nav-item"><a href="{% url 'event_list' %}">Events</a></li>
+                {# Added Gallery Page Link #}
+                <li class="nav-item"><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li class="nav-item"><a href="{% url 'results:teacher_search_student' %}">Teacher Score Entry</a></li>
+                <li class="nav-item"><a href="{% url 'results:check_results' %}">Check Results</a></li>
+                {# FIX APPLIED HERE: Changed 'contact' to 'contact_us' #}
+                <li class="nav-item"><a href="{% url 'contact_us' %}">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {% now "Y" %} ROYAL BEES SCHOOLS. All rights reserved.</p>
+    </footer>
+
+    {# --- GLOBAL JAVASCRIPT LIBRARIES - LOADED DIRECTLY IN BASE.HTML --- #}
+    {# jQuery must be loaded FIRST #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    {# Bootstrap JS (Popper.js is a dependency for Bootstrap 4, then Bootstrap JS) #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
+
+    {# Waypoints and Counter-Up (if used globally, otherwise move to specific templates) #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+    {# Your custom global script.js #}
+    <script src="{% static 'core/js/script.js' %}"></script>
+
+    {# --- BLOCK FOR PAGE-SPECIFIC JAVASCRIPT --- #}
+    {# Scripts placed here will be appended to the global scripts (e.g., Lightbox JS for gallery page) #}
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

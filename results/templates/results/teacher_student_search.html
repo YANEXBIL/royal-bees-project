@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page_title }} - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+<hr>
+
+<p>Search for a student to begin entering or viewing their results for a specific session and term.</p>
+
+<form method="POST" action="{% url 'results:teacher_search_student' %}" style="margin-bottom: 2em;">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Search Student</legend>
+        <p>
+            <label for="search_query">Enter Student ID, First Name, or Last Name:</label><br>
+            <input type="text" name="search_query" id="search_query" value="{{ search_query }}" style="width: 70%; padding: 8px;" required>
+            <button type="submit" style="padding: 9px 15px;">Search</button>
+        </p>
+    </fieldset>
+</form>
+
+{% if request.method == "POST" %}
+    {% if students_found %}
+        <h2>Search Results ({{ students_found.count }} student{{ students_found.count|pluralize }} found):</h2>
+        <table class="results-table"> {# Reusing class from student result view for similar styling #}
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Full Name</th>
+                    <th>Current Class</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students_found %}
+                <tr>
+                    <td>{{ student.student_id }}</td>
+                    <td>{{ student.get_full_name }}</td>
+                    <td>{{ student.current_class.name|default:"N/A" }}</td>
+                    <td>
+                        {# In the next step, this link will take to the session/term selection page for this student #}
+                   <a href="{% url 'results:teacher_select_session_term' student_id=student.id %}">Select Student & Proceed</a>                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        {% if search_query %} {# Only show 'no results' if a search was actually made #}
+            <p>No students found matching your search query: "<strong>{{ search_query }}</strong>". Please try again.</p>
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+{% endblock %}

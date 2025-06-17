@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ news_item.title }} - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+<article class="news-article">
+    <h1>{{ news_item.title }}</h1>
+    <p class="news-meta">
+        <small>
+            Published on: {{ news_item.published_date|date:"l, F d, Y, P" }} {% if news_item.author %}
+                by {{ news_item.author.get_full_name|default:news_item.author.username }}
+            {% endif %}
+        </small>
+    </p>
+    <hr>
+    <div class="news-content">
+        {{ news_item.content|linebreaksbr }} {# linebreaksbr converts newlines to <br> tags #}
+    </div>
+    <hr style="margin-top: 2em; margin-bottom: 1em;">
+    <p><a href="{% url 'news_list' %}">&laquo; Back to News List</a></p>
+</article>
+{% endblock %}

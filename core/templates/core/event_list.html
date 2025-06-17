@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page_title|default:"Events" }} - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+<h1>{{ page_title|default:"School Events" }}</h1>
+<hr>
+
+{% if upcoming_events %}
+    <h2>Upcoming Events</h2>
+    <ul class="event-list">
+        {% for event in upcoming_events %}
+            <li class="event-item-summary">
+                <h3>
+                    <a href="{% url 'event_detail' year=event.start_datetime.year month=event.start_datetime.month|stringformat:'02d' day=event.start_datetime.day|stringformat:'02d' slug=event.slug %}">
+                        {{ event.title }}
+                    </a>
+                </h3>
+                <p class="event-meta">
+                    <small>
+                        <strong>Date:</strong> {{ event.start_datetime|date:"D, M d, Y, P" }}
+                        {% if event.end_datetime %}
+                            to {{ event.end_datetime|date:"D, M d, Y, P" }}
+                        {% endif %}
+                        <br>
+                        {% if event.location %}
+                            <strong>Location:</strong> {{ event.location }}
+                        {% endif %}
+                    </small>
+                </p>
+                {% if event.description %}
+                    <p>{{ event.description|striptags|truncatewords_html:30 }}</p>
+                {% endif %}
+                <a href="{% url 'event_detail' year=event.start_datetime.year month=event.start_datetime.month|stringformat:'02d' day=event.start_datetime.day|stringformat:'02d' slug=event.slug %}" class="read-more">View Details &raquo;</a>
+                <hr class="event-item-divider" style="margin-top: 1em; margin-bottom: 1em;">
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No upcoming events scheduled at the moment. Please check back soon!</p>
+{% endif %}
+
+{% if past_events %} {# Optional: Display past events #}
+    <h2 style="margin-top: 2em;">Recent Past Events</h2>
+    <ul class="event-list">
+        {% for event in past_events|slice:":5" %} {# Show latest 5 past events #}
+            <li class="event-item-summary past-event">
+                <h3>
+                     <a href="{% url 'event_detail' year=event.start_datetime.year month=event.start_datetime.month|stringformat:'02d' day=event.start_datetime.day|stringformat:'02d' slug=event.slug %}">
+                        {{ event.title }}
+                    </a>
+                </h3>
+                <p class="event-meta">
+                    <small>
+                        <strong>Date:</strong> {{ event.start_datetime|date:"D, M d, Y, P" }}
+                        {% if event.location %}
+                            <br><strong>Location:</strong> {{ event.location }}
+                        {% endif %}
+                    </small>
+                </p>
+                 <hr class="event-item-divider" style="margin-top: 1em; margin-bottom: 1em;">
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

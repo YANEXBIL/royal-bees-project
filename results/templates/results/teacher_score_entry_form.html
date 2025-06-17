@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page_title|default:"Enter Scores" }} - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+<hr>
+
+{# Display Django Messages #}
+{% if messages %}
+    <ul class="messages" style="list-style-type: none; padding: 0; margin-bottom: 1em;">
+        {% for message in messages %}
+            {# The message.tags will include "error", "success", "info", "warning", "debug" #}
+            <li class="{{ message.tags }}" 
+                style="padding: 10px 15px; margin-bottom: 10px; border-radius: 4px; border: 1px solid transparent; line-height: 1.4;"> 
+                {# Basic padding/border/line-height, specific colors will come from CSS classes in style.css #}
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div style="margin-bottom: 1.5em; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+    <p><strong>Student:</strong> {{ student.get_full_name }} (ID: {{ student.student_id }})</p>
+    <p><strong>Class:</strong> {{ student.current_class.name|default:"N/A" }}</p>
+    <p><strong>Session:</strong> {{ selected_session.year }}</p>
+    <p><strong>Term:</strong> {{ selected_term.name }}</p>
+</div>
+
+{% if score_formset %}
+    <form method="POST" action="{% url 'results:teacher_select_session_term' student_id=student.id %}"> 
+        {% csrf_token %}
+        {{ score_formset.management_form }}
+
+        {# Hidden fields to pass session and term IDs when 'save_scores' is clicked #}
+        <input type="hidden" name="posted_academic_session_id" value="{{ selected_session.id }}">
+        <input type="hidden" name="posted_term_id" value="{{ selected_term.id }}">
+
+        {% if score_formset.non_form_errors %}
+            <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 15px;">
+                <strong>Formset Errors:</strong>
+                <ul>
+                    {% for error in score_formset.non_form_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Subject</th>
+                    <th>{{ score_formset.empty_form.test_score_1.label_tag }}</th>
+                    <th>{{ score_formset.empty_form.test_score_2.label_tag }}</th>
+                    <th>{{ score_formset.empty_form.exam_score.label_tag }}</th>
+                    <th style="width: 25%;">Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in score_formset %}
+                    <tr>
+                        <td>
+                            {{ form.initial.subject_name_display }}
+                            {{ form.subject_id }} {# Hidden input field #}
+                            {% if form.subject_id.errors %}<ul class="errorlist">{% for error in form.subject_id.errors %}<li>{{error}}</li>{% endfor %}</ul>{% endif %}
+                        </td>
+                        <td>
+                            {{ form.test_score_1 }}
+                            {% if form.test_score_1.errors %}<ul class="errorlist">{% for error in form.test_score_1.errors %}<li>{{error}}</li>{% endfor %}</ul>{% endif %}
+                        </td>
+                        <td>
+                            {{ form.test_score_2 }}
+                            {% if form.test_score_2.errors %}<ul class="errorlist">{% for error in form.test_score_2.errors %}<li>{{error}}</li>{% endfor %}</ul>{% endif %}
+                        </td>
+                        <td>
+                            {{ form.exam_score }}
+                            {% if form.exam_score.errors %}<ul class="errorlist">{% for error in form.exam_score.errors %}<li>{{error}}</li>{% endfor %}</ul>{% endif %}
+                        </td>
+                        <td>
+                            {{ form.remarks }}
+                            {% if form.remarks.errors %}<ul class="errorlist">{% for error in form.remarks.errors %}<li>{{error}}</li>{% endfor %}</ul>{% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <button type="submit" name="save_scores">Save Scores</button>
+    </form>
+{% else %}
+    <p>Could not prepare the score entry form. Please check if subjects are defined for the school.</p>
+    {% if message %}
+        <p style="color: blue;">{{ message }}</p>
+    {% endif %}
+{% endif %}
+
+<div style="margin-top: 2em;">
+    <a href="{% url 'results:teacher_select_session_term' student_id=student.id %}" style="margin-right: 10px; padding: 8px 12px; background-color: #6c757d; color:white; text-decoration:none; border-radius:4px;">&laquo; Change Session/Term (Resets Form)</a>
+    <a href="{% url 'results:teacher_search_student' %}" style="padding: 8px 12px; background-color: #007bff; color:white; text-decoration:none; border-radius:4px;">&laquo; Back to Student Search</a>
+</div>
+{% endblock %}

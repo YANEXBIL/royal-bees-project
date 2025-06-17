@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page_title|default:"Check Results" }} - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+<h1>{{ page_title|default:"Check Your Academic Results" }}</h1>
+<hr>
+
+<p>Please enter your Student ID and PIN to view all your available results.</p>
+
+{# Display Django Messages - ensure this block or similar is in your base.html #}
+{% if messages %}
+    <ul class="messages" style="list-style-type: none; padding: 0; margin-bottom: 1em;">
+        {% for message in messages %}
+            <li class="{{ message.tags }}" 
+                style="padding: 10px 15px; margin-bottom: 10px; border-radius: 4px; border: 1px solid transparent; line-height: 1.4;"> 
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="post" action="{% url 'results:check_results' %}">    {% csrf_token %}
+    <fieldset style="margin-bottom: 2em;">
+        <legend>Enter Your Details</legend>
+        <p>
+            <label for="student_id">Student ID:</label><br>
+            <input type="text" name="student_id" id="student_id" value="{{ request.POST.student_id }}" required>
+        </p>
+        <p>
+            <label for="pin">PIN:</label><br>
+            <input type="password" name="pin" id="pin" required>
+        </p>
+        <p>
+            <button type="submit">Check Results</button>
+        </p>
+    </fieldset>
+</form>
+
+{# --- Section to Display Student's Results --- #}
+{% if queried_student and student_results_by_term %}
+    <hr>
+    <h2>Results for: {{ queried_student.get_full_name }} ({{ queried_student.student_id }})</h2>
+    
+    {% for session_term_key, results_list in student_results_by_term.items %}
+        <div class="term-results-block" style="margin-bottom: 2em; padding:1em; border:1px solid #eee; border-radius: 5px;">
+            <h3>
+                Session: {{ session_term_key.0 }} | Term: {{ session_term_key.1 }} 
+                {% if session_term_key.4 != "N/A" %} | Class: {{ session_term_key.4 }} {% endif %}
+            </h3>
+            <table class="results-table"> {# Use the class for styling #}
+                <thead>
+                    <tr style="background-color: #f2f2f2;">
+                        <th style="padding: 8px; text-align: left;">Subject</th>
+                        <th style="padding: 8px; text-align: center;">CA 1 Score</th>
+                        <th style="padding: 8px; text-align: center;">CA 2 Score</th>
+                        <th style="padding: 8px; text-align: center;">Exam Score</th>
+                        <th style="padding: 8px; text-align: center;">Total Score</th>
+                        <th style="padding: 8px; text-align: center;">Grade</th>
+                        <th style="padding: 8px; text-align: left;">Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result_entry in results_list %}
+                        <tr>
+                            <td style="padding: 8px;">{{ result_entry.subject.name }}</td>
+                            <td style="padding: 8px; text-align: center;">{{ result_entry.test_score_1|default:"-" }}</td>
+                            <td style="padding: 8px; text-align: center;">{{ result_entry.test_score_2|default:"-" }}</td>
+                            <td style="padding: 8px; text-align: center;">{{ result_entry.exam_score|default:"-" }}</td>
+                            <td style="padding: 8px; text-align: center;"><strong>{{ result_entry.total_score|default:"-" }}</strong></td>
+                            <td style="padding: 8px; text-align: center;"
+                                {% if result_entry.grade == 'A1' or result_entry.grade == 'A' %} class="grade-a"
+                                {% elif result_entry.grade|slice:":1" == 'B' %} class="grade-b"
+                                {% elif result_entry.grade|slice:":1" == 'C' %} class="grade-c"
+                                {% elif result_entry.grade|slice:":1" == 'D' %} class="grade-d"
+                                {% elif result_entry.grade|slice:":1" == 'F' or result_entry.grade|slice:":1" == 'E' %} class="grade-f"
+                                {% endif %}>
+                                <strong>{{ result_entry.grade|default:"-" }}</strong>
+                            </td>
+                            <td style="padding: 8px;">{{ result_entry.remarks|default:"" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+{% elif queried_student and not student_results_by_term and request.method == "POST" %}
+    {# This message now comes from the view via messages.info if no results are found #}
+    {# but we can keep a fallback here if needed or if student exists but results_by_term is somehow empty #}
+    <p>No results are currently available for {{ queried_student.get_full_name }}.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{# Or whatever your base template is #}
+
+{% block title %}Results for {{ student.get_full_name }}{% endblock %}
+
+{% block content %}
+    <h1>Academic Results for {{ student.get_full_name }}</h1>
+    <p>Student ID: {{ student.student_id }}</p>
+    <p>Class: {{ student.current_class.name }}</p>
+
+    {% if academic_session %}
+        <h2>{{ academic_session.year }} - {{ current_term.name }} Results</h2>
+    {% else %}
+        <h2>Available Results</h2>
+    {% endif %}
+
+
+    {% if results %}
+        <table border="1" cellpadding="10" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>CA 1</th>
+                    <th>CA 2</th>
+                    <th>Exam Score</th>
+                    <th>Total Score</th>
+                    <th>Grade</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.subject.name }}</td>
+                        <td>{{ result.test_score_1|default:"-" }}</td>
+                        <td>{{ result.test_score_2|default:"-" }}</td>
+                        <td>{{ result.exam_score|default:"-" }}</td>
+                        <td>{{ result.total_score|default:"-" }}</td>
+                        <td>{{ result.grade|default:"-" }}</td>
+                        <td>{{ result.remarks|default:"N/A" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No results found for this student for the current session/term, or no results recorded yet.</p>
+    {% endif %}
+
+    <p><a href="{% url 'results:check_results' %}">Check another result</a></p> {# Assuming you name your URL 'results:check_results' #}
+
+{% endblock %}

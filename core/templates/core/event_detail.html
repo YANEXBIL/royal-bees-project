@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ event.title }} - Events - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+<article class="event-article">
+    <h1>{{ event.title }}</h1>
+    <p class="event-meta">
+        <small>
+            <strong>Date & Time:</strong> {{ event.start_datetime|date:"l, F d, Y, P" }}
+            {% if event.end_datetime %}
+                to {{ event.end_datetime|date:"l, F d, Y, P" }}
+            {% endif %}
+            <br>
+            {% if event.location %}
+                <strong>Location:</strong> {{ event.location }}
+            {% endif %}
+        </small>
+    </p>
+    <hr>
+    {% if event.description %}
+        <div class="event-description" style="margin-top: 1em; margin-bottom: 1em;">
+            {{ event.description|linebreaksbr }}
+        </div>
+    {% else %}
+        <p style="margin-top: 1em; margin-bottom: 1em;">No further details available for this event.</p>
+    {% endif %}
+    <hr style="margin-top: 2em; margin-bottom: 1em;">
+    <p><a href="{% url 'event_list' %}">&laquo; Back to Events List</a></p>
+</article>
+{% endblock %}

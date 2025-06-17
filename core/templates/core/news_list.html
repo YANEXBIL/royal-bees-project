@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page_title|default:"News & Announcements" }} - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+<h1>{{ page_title|default:"News & Announcements" }}</h1>
+<hr>
+{% if news_items %}
+    <ul class="news-list">
+        {% for item in news_items %}
+            <li class="news-item-summary">
+                <h3>
+                    <a href="{% url 'news_detail' year=item.published_date.year month=item.published_date.month|stringformat:'02d' day=item.published_date.day|stringformat:'02d' slug=item.slug %}">
+                        {{ item.title }}
+                    </a>
+                </h3>
+                <p class="news-meta">
+                    <small>
+                        Published on: {{ item.published_date|date:"F d, Y" }}
+                        {% if item.author %} by {{ item.author.get_full_name|default:item.author.username }}{% endif %}
+                    </small>
+                </p>
+                <p>{{ item.content|striptags|truncatewords_html:35 }}</p> {# Show a snippet, striptags prevents broken HTML #}
+                <a href="{% url 'news_detail' year=item.published_date.year month=item.published_date.month|stringformat:'02d' day=item.published_date.day|stringformat:'02d' slug=item.slug %}" class="read-more">Read More &raquo;</a>
+                <hr class="news-item-divider" style="margin-top: 1em; margin-bottom: 1em;">
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No news items have been published yet. Please check back later!</p>
+{% endif %}
+{% endblock %}

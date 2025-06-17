@@ -1,0 +1,445 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Gallery - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block head_extra %}
+    {# Lightbox2 CSS - REQUIRED for Lightbox functionality #}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+    <style>
+        .gallery-img-thumbnail {
+            height: 250px; /* Consistent height for image thumbnails */
+            object-fit: cover; /* Ensures images cover the area without distortion */
+        }
+        .gallery-video-thumbnail {
+            height: 250px; /* Consistent height for video thumbnails */
+            object-fit: cover;
+            width: 100%; /* Ensure video takes full width of its container */
+        }
+        .gallery-item .card-body {
+            height: auto; /* Allow card body to adjust height based on content */
+            min-height: 100px; /* Ensure some minimum height for consistency */
+        }
+        .gallery-item a {
+            display: block; /* Make the entire image clickable */
+            line-height: 0; /* Remove extra space below image */
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <section class="gallery-page-section py-5">
+        <div class="container">
+            <h1 class="text-center mb-5 display-4 text-primary animate__animated animate__fadeInDown">Our School Gallery</h1>
+            <p class="lead text-center mb-5 animate__animated animate__fadeInUp">
+                A visual journey through the vibrant life, memorable events, and academic excellence at ROYAL BEES SCHOOLS.
+            </p>
+
+            <div class="row g-4 gallery-grid-page">
+                {# New Images #}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.10_2b12369f.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 1">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.10_2b12369f.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 1">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Event Highlight</h5>
+                            <p class="card-text text-muted">Joyful moments from a recent school event.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.10_3d4b44ca.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 2">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.10_3d4b44ca.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 2">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Student Engagement</h5>
+                            <p class="card-text text-muted">Students participating in an activity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.12_1c7da77c.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 3">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.12_1c7da77c.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 3">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Learning Environment</h5>
+                            <p class="card-text text-muted">A glimpse into our vibrant classrooms.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.12_49401732.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 4">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.12_49401732.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 4">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Activity Session</h5>
+                            <p class="card-text text-muted">Students engaged in a fun activity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_1c62d7df.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 5">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_1c62d7df.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 5">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Bright Futures</h5>
+                            <p class="card-text text-muted">Our students, ready to learn.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_8d1ba917.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 6">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_8d1ba917.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 6">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Focused Learning</h5>
+                            <p class="card-text text-muted">Students concentrating during class.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_122e1df8.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 7">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_122e1df8.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 7">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Interactive Session</h5>
+                            <p class="card-text text-muted">An engaging moment in the classroom.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_c7fa74d1.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 8">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_c7fa74d1.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 8">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Group Activity</h5>
+                            <p class="card-text text-muted">Students working together on a project.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_cd84f0c9.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 9">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_cd84f0c9.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 9">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Classroom Engagement</h5>
+                            <p class="card-text text-muted">Teacher and students in a discussion.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_5a7235bc.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 10">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_5a7235bc.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 10">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Student Life</h5>
+                            <p class="card-text text-muted">A candid shot of student life.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_39f36aa3.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 11">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_39f36aa3.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 11">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Focused Study</h5>
+                            <p class="card-text text-muted">Students engaged in academic work.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_5672d10e.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 12">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_5672d10e.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 12">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Active Learning</h5>
+                            <p class="card-text text-muted">Students in an active learning setting.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_e29fb873.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 13">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_e29fb873.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 13">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Creative Expression</h5>
+                            <p class="card-text text-muted">Students exploring their creativity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_f4398e11.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 14">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_f4398e11.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 14">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Collaborative Spirit</h5>
+                            <p class="card-text text-muted">Working together towards a common goal.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_4d19b7be.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 15">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_4d19b7be.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 15">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Student Achievements</h5>
+                            <p class="card-text text-muted">Celebrating success in our school community.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_6cfe7b47.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 16">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_6cfe7b47.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 16">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Campus Life</h5>
+                            <p class="card-text text-muted">A view of daily life on campus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_16fe64b5.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 17">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_16fe64b5.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 17">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Learning Together</h5>
+                            <p class="card-text text-muted">Students and teachers collaborating.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_717cb61e.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 18">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_717cb61e.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 18">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Academic Pursuit</h5>
+                            <p class="card-text text-muted">Students focused on their studies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_944807d8.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 19">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_944807d8.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 19">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Engaged Learners</h5>
+                            <p class="card-text text-muted">Students showing enthusiasm for learning.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.17_8e41be6a.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 20">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.17_8e41be6a.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 20">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Collaborative Learning</h5>
+                            <p class="card-text text-muted">Students working in groups.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.23_2ebfe9d2.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 21">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.23_2ebfe9d2.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 21">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Focused Engagement</h5>
+                            <p class="card-text text-muted">Students deeply involved in a task.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.23_c9b4ed2f.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 22">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.23_c9b4ed2f.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 22">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Classroom Interaction</h5>
+                            <p class="card-text text-muted">Teacher and students interacting.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.24_29d50166.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 23">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.24_29d50166.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 23">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Outdoor Play</h5>
+                            <p class="card-text text-muted">Students enjoying outdoor activities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.24_b850f735.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 24">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.24_b850f735.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 24">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Happy Faces</h5>
+                            <p class="card-text text-muted">Students smiling and happy.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.30.04_ce5f2bee.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 25">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.30.04_ce5f2bee.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 25">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Graduation Day</h5>
+                            <p class="card-text text-muted">Celebrating achievements and milestones.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.30.47_893a12ff.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 26">
+                            <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.30.47_893a12ff.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 26">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">Proud Moments</h5>
+                            <p class="card-text text-muted">Students receiving recognition.</p>
+                        </div>
+                    </div>
+                </div>
+
+                {# New Videos #}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                            <video class="embed-responsive-item gallery-video-thumbnail" controls>
+                                <source src="{% static 'core/images/Rimages/WhatsApp Video 2025-06-03 at 08.26.11_efb1b92f.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">School Life Video 1</h5>
+                            <p class="card-text text-muted">A short clip showcasing daily school activities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                            <video class="embed-responsive-item gallery-video-thumbnail" controls>
+                                <source src="{% static 'core/images/Rimages/WhatsApp Video 2025-06-03 at 08.26.32_4ff4d78b.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">School Life Video 2</h5>
+                            <p class="card-text text-muted">More dynamic scenes from our campus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                            <video class="embed-responsive-item gallery-video-thumbnail" controls>
+                                <source src="{% static 'core/images/Rimages/WhatsApp Video 2025-06-03 at 08.28.17_b0ccd055.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">School Life Video 3</h5>
+                            <p class="card-text text-muted">Highlights of student interactions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                            <video class="embed-responsive-item gallery-video-thumbnail" controls>
+                                <source src="{% static 'core/images/Rimages/WhatsApp Video 2025-06-03 at 08.28.22_4738d037.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">School Life Video 4</h5>
+                            <p class="card-text text-muted">Capturing the energy of our school.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                            <video class="embed-responsive-item gallery-video-thumbnail" controls>
+                                <source src="{% static 'core/images/Rimages/WhatsApp Video 2025-06-03 at 08.28.23_6b581be6.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">School Life Video 5</h5>
+                            <p class="card-text text-muted">Moments of joy and learning.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                            <video class="embed-responsive-item gallery-video-thumbnail" controls>
+                                <source src="{% static 'core/images/Rimages/WhatsApp Video 2025-06-03 at 08.28.23_32d1b4f9.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">School Life Video 6</h5>
+                            <p class="card-text text-muted">A collection of school activities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                    <div class="gallery-item card shadow-sm h-100">
+                        <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                            <video class="embed-responsive-item gallery-video-thumbnail" controls>
+                                <source src="{% static 'core/images/Rimages/WhatsApp Video 2025-06-03 at 08.28.23_47572517.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">School Life Video 7</h5>
+                            <p class="card-text text-muted">Experience the energy of our school.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# Optional: Load More Button or Pagination #}
+            <div class="text-center mt-5">
+                <button class="btn btn-primary btn-lg">Load More Images/Videos</button>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+    {# jQuery must be loaded FIRST as other scripts depend on it #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    {# Lightbox2 JS - REQUIRED for Lightbox functionality #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        // Example: Simple console log when gallery page loads
+        console.log("Gallery page loaded!");
+    </script>
+{% endblock %}

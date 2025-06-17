@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }} - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+<hr>
+<p>Our dedicated academic departments are staffed by experienced and passionate educators committed to delivering high-quality instruction and support to our students.</p>
+
+{% if departments %}
+    {% for dept in departments %}
+        <div class="department-summary" style="margin-bottom: 1.5em; padding: 1em; border: 1px solid #eee; border-radius: 5px;">
+            <h3>{{ dept.name }}</h3>
+            {% if dept.head %}
+                <p><strong>Head of Department:</strong> {{ dept.head }}</p>
+            {% endif %}
+            {% if dept.description %}
+                <p>{{ dept.description }}</p>
+            {% endif %}
+            </div>
+    {% endfor %}
+{% else %}
+    <p>Information about our academic departments will be updated soon.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page_title }} - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+<div style="margin-bottom: 1.5em; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+    <p><strong>Student:</strong> {{ student.get_full_name }} (ID: {{ student.student_id }})</p>
+    <p><strong>Class:</strong> {{ student.current_class.name|default:"N/A" }}</p>
+</div>
+
+<p>Please select the Academic Session and Term for which you want to enter results for <strong>{{ student.get_full_name }}</strong>.</p>
+
+{% if error_message %}
+    <p style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 15px;"><strong>Error:</strong> {{ error_message }}</p>
+{% endif %}
+
+<form method="POST" action="{% url 'results:teacher_select_session_term' student_id=student.id %}">
+    {% csrf_token %}
+    <fieldset style="margin-bottom: 2em;">
+        <legend>Select Period</legend>
+        <p>
+            <label for="academic_session">Academic Session:</label><br>
+            <select name="academic_session" id="academic_session" required>
+                <option value="">--- Select Session ---</option>
+                {% for session_item in sessions %}
+                    {# CORRECTED LINE BELOW - Parentheses removed from the if condition #}
+                    <option value="{{ session_item.id }}" {% if request.POST.academic_session == session_item.id|stringformat:"s" or request.method == "GET" and current_session and current_session.id == session_item.id %}selected{% endif %}>
+                        {{ session_item.year }}
+                    </option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label for="term">Term:</label><br>
+            <select name="term" id="term" required>
+                <option value="">--- Select Term ---</option>
+                {% for term_item in terms %}
+                    <option value="{{ term_item.id }}" {% if request.POST.term == term_item.id|stringformat:"s" %}selected{% endif %}>
+                        {{ term_item.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <button type="submit">Proceed to Enter Scores</button>
+        </p>
+    </fieldset>
+</form>
+
+<p><a href="{% url 'results:teacher_search_student' %}">&laquo; Back to Student Search</a></p>
+
+{% endblock %}

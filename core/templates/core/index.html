@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - ROYAL BEES SCHOOLS{% endblock %}
+
+{% block content %}
+    <style>
+        /* Keyframes for the text carousel animation */
+        @keyframes textSlide {
+            0% { transform: translateY(0); opacity: 0; }
+            10% { transform: translateY(0); opacity: 1; } /* Show for a shorter duration */
+            20% { transform: translateY(-100%); opacity: 0; } /* Slide out upwards */
+            100% { transform: translateY(500%); opacity: 0; } /* Keep out of view until next cycle */
+        }
+
+        /* Styles for the rotating banner */
+        .rotating-banner {
+            background-color: #FFD700; /* Gold color */
+            color: #212529; /* Dark text for better contrast on gold */
+            text-align: center;
+            padding: 10px 0;
+            overflow: hidden;
+            height: 40px; /* Fixed height for the banner */
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .rotating-banner .message-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .rotating-banner .message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: 500;
+            opacity: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Calculate new animation duration: Let's aim for 5-6 seconds per message.
+           With 6 messages, total animation will be 6 * 6 = 36 seconds.
+           Each message will appear for about 6 seconds.
+        */
+        .rotating-banner .message:nth-child(1) {
+            animation: textSlide 36s infinite;
+            animation-delay: 0s;
+        }
+        .rotating-banner .message:nth-child(2) {
+            animation: textSlide 36s infinite;
+            animation-delay: 6s; /* 6 seconds delay */
+        }
+        .rotating-banner .message:nth-child(3) {
+            animation: textSlide 36s infinite;
+            animation-delay: 12s; /* 6 * 2 */
+        }
+        .rotating-banner .message:nth-child(4) {
+            animation: textSlide 36s infinite;
+            animation-delay: 18s; /* 6 * 3 */
+        }
+        .rotating-banner .message:nth-child(5) {
+            animation: textSlide 36s infinite;
+            animation-delay: 24s; /* 6 * 4 */
+        }
+        .rotating-banner .message:nth-child(6) {
+            animation: textSlide 36s infinite;
+            animation-delay: 30s; /* 6 * 5 */
+        }
+
+        /* Optional: Subtle pulse for the "Apply Now" button */
+        .animate__pulse_custom {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+
+    {# --- START Rotating Welcome Banner (Homepage Only) --- #}
+    <div class="rotating-banner">
+        <div class="message-container">
+            <p class="message">Welcome to Royal Bees Schools!</p>
+            <p class="message">Admissions for 2025/2026 are open!</p>
+            <p class="message">Nurturing Bright Minds in Nigeria.</p>
+            <p class="message">Quality Education for a Better Future.</p>
+            <p class="message">Enroll Your Child Today!</p>
+            <p class="message">Discover Our Excellent Facilities.</p>
+        </div>
+    </div>
+    {# --- END Rotating Welcome Banner --- #}
+
+    <section class="hero-section text-center text-white d-flex align-items-center justify-content-center">
+        <div class="container animate__animated animate__fadeInUp">
+            <h1>Welcome to Royal Bees Schools</h1>
+            <p class="lead">Nurturing Minds, Building Futures</p>
+            <a href="{% url 'admissions' %}" class="btn btn-warning btn-lg mt-3 animate__animated animate__pulse_custom">Apply Now</a>
+        </div>
+    </section>
+
+    <section class="quick-links py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Discover More</h2>
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="{% url 'about' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <i class="fas fa-school fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title text-dark">About Us</h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="{% url 'academics_overview' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <i class="fas fa-book-open fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title text-dark">Academics</h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="{% url 'admissions' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <i class="fas fa-user-plus fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title text-dark">Admissions</h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="{% url 'news_list' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <i class="fas fa-bullhorn fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title text-dark">News & Announcements</h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="{% url 'contact_us' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <i class="fas fa-headset fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title text-dark">Contact Us</h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="{% url 'gallery' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <i class="fas fa-images fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title text-dark">Gallery</h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="{% url 'event_list' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
+                        <div class="card-body">
+                            <i class="fas fa-calendar-day fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title text-dark">Events</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-us-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0 animate__animated animate__fadeInLeft">
+                    <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_122e1df8.jpg' %}" alt="Students at Royal Bees School" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6 animate__animated animate__fadeInRight">
+                    <h2>About Royal Bees Schools</h2>
+                    <p class="lead">At Royal Bees Schools, we are committed to providing a holistic educational experience that fosters intellectual curiosity, critical thinking, and character development.</p>
+                    <p>Our dedicated faculty, state-of-the-art facilities, and innovative curriculum ensure every student reaches their full potential. We believe in creating a supportive and engaging environment where learning thrives.</p>
+                    <a href="{% url 'about' %}" class="btn btn-warning">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-events-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Latest News & Upcoming Events</h2>
+            <div class="row g-4">
+                {# Dynamically generate Latest News cards #}
+                {% for news_item in latest_news %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        {# Adjust image path if your NewsItem model has an 'image' field #}
+                        <img src="{% static 'core/images/default_news.jpg' %}" class="card-img-top" alt="{{ news_item.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ news_item.title }}</h5>
+                            <p class="card-text"><small class="text-muted">{{ news_item.published_date|date:"F d, Y" }}</small></p>
+                            {# Use news_item.summary if you have it, otherwise news_item.content #}
+                            <p class="card-text">{{ news_item.content|truncatechars:100 }}</p>
+                            <a href="{% url 'news_detail' year=news_item.published_date.year month=news_item.published_date.month day=news_item.published_date.day slug=news_item.slug %}" class="btn btn-sm btn-outline-warning">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                {# Message if no news items are found in the database #}
+                <div class="col-12">
+                    <p class="text-center text-muted">No recent news available. Add some news items in the Django admin.</p>
+                </div>
+                {% endfor %}
+
+                {# Dynamically generate Upcoming Events cards #}
+                {% for event_item in upcoming_events %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        {# Adjust image path if your Event model has an 'image' field #}
+                        <img src="{% static 'core/images/default_event.jpg' %}" class="card-img-top" alt="{{ event_item.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ event_item.title }}</h5>
+                            <p class="card-text"><small class="text-muted">{{ event_item.start_datetime|date:"F d, Y - P" }}</small></p>
+                            {# Use event_item.description if you have it, otherwise event_item.content #}
+                            <p class="card-text">{{ event_item.description|truncatechars:100 }}</p>
+                            <a href="{% url 'event_detail' year=event_item.start_datetime.year month=event_item.start_datetime.month day=event_item.start_datetime.day slug=event_item.slug %}" class="btn btn-sm btn-outline-warning">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                {# Message if no events are found in the database #}
+                <div class="col-12">
+                    <p class="text-center text-muted">No upcoming events available. Add some events in the Django admin.</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-5">
+                <a href="{% url 'news_list' %}" class="btn btn-primary btn-lg mx-2">View All News</a>
+                <a href="{% url 'event_list' %}" class="btn btn-secondary btn-lg mx-2">View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">What Our Community Says</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#testimonialCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#testimonialCarousel" data-slide-to="1"></li>
+                    <li data-target="#testimonialCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card text-center p-4">
+                            <p class="lead">"Royal Bees Schools has provided an outstanding environment for my children. The teachers are incredible, and the curriculum is top-notch."</p>
+                            <footer class="blockquote-footer">Parent of a Primary Student</footer>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card text-center p-4">
+                            <p class="lead">"I'm so grateful for the support and guidance I received here. Royal Bees prepared me not just for university, but for life."</p>
+                            <footer class="blockquote-footer">Alumnus, Class of 2020</footer>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card text-center p-4">
+                            <p class="lead">"The emphasis on character development alongside academics truly sets this school apart. My child is thriving!"</p>
+                            <footer class="blockquote-footer">Parent of a Secondary Student</footer>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-enrollment py-5 text-white text-center">
+        <div class="container animate__animated animate__fadeIn">
+            <h2>Ready to Join the Royal Bees Family?</h2>
+            <p class="lead">Discover the difference a quality education can make.</p>
+            <a href="{% url 'admissions' %}" class="btn btn-light btn-lg mt-3">Learn About Admissions</a>
+        </div>
+    </section>
+
+{% endblock %}
