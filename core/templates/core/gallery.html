@@ -24,6 +24,15 @@
             display: block; /* Make the entire image clickable */
             line-height: 0; /* Remove extra space below image */
         }
+        /* New CSS for mobile specific adjustments if needed, though col-6 should handle most */
+        @media (max-width: 575.98px) { /* Extra small devices (portrait phones) */
+            .gallery-grid-page .col-lg-4,
+            .gallery-grid-page .col-md-6,
+            .gallery-grid-page .col-sm-12 {
+                flex: 0 0 50%; /* Each takes 50% width */
+                max-width: 50%;
+            }
+        }
     </style>
 {% endblock %}
 
@@ -37,7 +46,7 @@
 
             <div class="row g-4 gallery-grid-page">
                 {# New Images #}
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.10_2b12369f.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 1">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.10_2b12369f.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 1">
@@ -48,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.10_3d4b44ca.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 2">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.10_3d4b44ca.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 2">
@@ -59,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.12_1c7da77c.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 3">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.12_1c7da77c.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 3">
@@ -70,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.12_49401732.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 4">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.12_49401732.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 4">
@@ -81,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_1c62d7df.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 5">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_1c62d7df.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 5">
@@ -92,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_8d1ba917.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 6">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_8d1ba917.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 6">
@@ -103,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_122e1df8.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 7">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_122e1df8.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 7">
@@ -114,7 +123,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_c7fa74d1.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 8">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_c7fa74d1.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 8">
@@ -125,7 +134,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_cd84f0c9.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 9">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.33_cd84f0c9.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 9">
@@ -136,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_5a7235bc.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 10">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_5a7235bc.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 10">
@@ -147,7 +156,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_39f36aa3.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 11">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_39f36aa3.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 11">
@@ -158,7 +167,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_5672d10e.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 12">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_5672d10e.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 12">
@@ -169,7 +178,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_e29fb873.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 13">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_e29fb873.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 13">
@@ -180,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_f4398e11.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 14">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.34_f4398e11.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 14">
@@ -191,7 +200,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_4d19b7be.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 15">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_4d19b7be.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 15">
@@ -202,7 +211,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_6cfe7b47.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 16">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_6cfe7b47.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 16">
@@ -213,7 +222,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_16fe64b5.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 17">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_16fe64b5.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 17">
@@ -224,7 +233,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_717cb61e.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 18">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_717cb61e.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 18">
@@ -235,7 +244,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_944807d8.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 19">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.26.35_944807d8.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 19">
@@ -246,7 +255,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.17_8e41be6a.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 20">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.17_8e41be6a.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 20">
@@ -257,7 +266,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.23_2ebfe9d2.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 21">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.23_2ebfe9d2.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 21">
@@ -268,7 +277,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.23_c9b4ed2f.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 22">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.23_c9b4ed2f.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 22">
@@ -279,7 +288,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.24_29d50166.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 23">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.24_29d50166.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 23">
@@ -290,7 +299,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.24_b850f735.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 24">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.28.24_b850f735.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 24">
@@ -301,7 +310,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.30.04_ce5f2bee.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 25">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.30.04_ce5f2bee.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 25">
@@ -312,7 +321,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <a href="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.30.47_893a12ff.jpg' %}" data-lightbox="school-gallery" data-title="School Event Moment 26">
                             <img src="{% static 'core/images/Rimages/WhatsApp Image 2025-06-03 at 08.30.47_893a12ff.jpg' %}" class="card-img-top img-fluid rounded-top gallery-img-thumbnail" alt="School Event Moment 26">
@@ -325,7 +334,7 @@
                 </div>
 
                 {# New Videos #}
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <div class="embed-responsive embed-responsive-16by9 rounded-top">
                             <video class="embed-responsive-item gallery-video-thumbnail" controls>
@@ -339,7 +348,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <div class="embed-responsive embed-responsive-16by9 rounded-top">
                             <video class="embed-responsive-item gallery-video-thumbnail" controls>
@@ -353,7 +362,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <div class="embed-responsive embed-responsive-16by9 rounded-top">
                             <video class="embed-responsive-item gallery-video-thumbnail" controls>
@@ -367,7 +376,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <div class="embed-responsive embed-responsive-16by9 rounded-top">
                             <video class="embed-responsive-item gallery-video-thumbnail" controls>
@@ -381,7 +390,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-1s">
                     <div class="gallery-item card shadow-sm h-100">
                         <div class="embed-responsive embed-responsive-16by9 rounded-top">
                             <video class="embed-responsive-item gallery-video-thumbnail" controls>
@@ -395,7 +404,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn animate__delay-2s">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn animate__delay-2s">
                     <div class="gallery-item card shadow-sm h-100">
                         <div class="embed-responsive embed-responsive-16by9 rounded-top">
                             <video class="embed-responsive-item gallery-video-thumbnail" controls>
@@ -409,7 +418,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 animate__animated animate__zoomIn">
+                <div class="col-lg-4 col-md-6 col-6 mb-4 animate__animated animate__zoomIn">
                     <div class="gallery-item card shadow-sm h-100">
                         <div class="embed-responsive embed-responsive-16by9 rounded-top">
                             <video class="embed-responsive-item gallery-video-thumbnail" controls>
@@ -419,27 +428,22 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">School Life Video 7</h5>
-                            <p class="card-text text-muted">Experience the energy of our school.</p>
+                            <p class="card-text text-muted">Capturing the energy of our school.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {# Optional: Load More Button or Pagination #}
-            <div class="text-center mt-5">
-                <button class="btn btn-primary btn-lg">Load More Images/Videos</button>
-            </div>
-        </div>
+            </div> {# End row #}
+        </div> {# End container #}
     </section>
 {% endblock %}
 
 {% block extra_js %}
-    {# jQuery must be loaded FIRST as other scripts depend on it #}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     {# Lightbox2 JS - REQUIRED for Lightbox functionality #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script>
-        // Example: Simple console log when gallery page loads
-        console.log("Gallery page loaded!");
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        })
     </script>
 {% endblock %}

@@ -6,44 +6,231 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ROYAL BEES SCHOOLS{% endblock %}</title>
 
-    {% load static %}
-<link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-    {# Add external CSS frameworks like Bootstrap and Font Awesome here #}
-    {# Ensure these URLs are correct for the versions you want to use #}
+    {# External CSS frameworks #}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    {# Optional: Google Fonts for Poppins and Montserrat (used in style.css) #}
+    {# Google Fonts #}
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    {% block head_extra %}{% endblock %} {# Placeholder for page-specific CSS (e.g., Lightbox CSS) #}
+    {# Favicon #}
+    <link rel="icon" href="{% static 'core/images/favicon.ico' %}" type="image/x-icon">
+
+    {% block head_extra %}{% endblock %}
+
+    <style>
+        /* --- EMBEDDED CSS START --- */
+
+        /* General Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f0f0f0;
+            overflow-x: hidden; /* Prevent horizontal scroll when sidebar is open */
+        }
+
+        /* Header Styles - BACKGROUND IMAGE APPLIED HERE */
+        .main-header {
+            background-image: url("https://yanex77.pythonanywhere.com/static/core/images/Rimages/WhatsApp%20Image%202025-06-03%20at%2008.26.10_2b12369f.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between; /* Keep spacing for logo and hamburger */
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            color: #fff;
+        }
+
+        /* Adjust specific header elements for contrast */
+        .main-header .site-title-link,
+        .main-header .site-title-link a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .header-logo-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1; /* Allow logo to take available space, pushing hamburger right */
+        }
+
+        .header-logo-img {
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .site-title-link {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        /* --- Sidebar Specific Styles --- */
+        .hamburger {
+            /* Always display the hamburger button */
+            display: block;
+            font-size: 1.8em;
+            background: none;
+            border: none;
+            color: #fff; /* Hamburger icon color */
+            cursor: pointer;
+            z-index: 1001; /* Above header content */
+        }
+
+        #sidebar-menu {
+            height: 100%;
+            width: 0; /* Initially hidden */
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.95); /* Darker overlay for sidebar */
+            overflow-x: hidden;
+            transition: 0.5s; /* Smooth slide transition */
+            padding-top: 60px; /* Space from top for close button */
+            display: flex; /* Use flexbox for vertical centering if needed */
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+        }
+
+        #sidebar-menu.active {
+            width: 250px; /* Width when open */
+        }
+
+        #sidebar-menu .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%; /* Take full width of sidebar */
+            text-align: center;
+        }
+
+        #sidebar-menu .nav-item {
+            margin: 20px 0;
+        }
+
+        #sidebar-menu .nav-item a {
+            padding: 8px 15px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        #sidebar-menu .nav-item a:hover {
+            color: #007bff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px; /* Pushes 'x' icon to the right */
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Main Content Area */
+        main {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            min-height: calc(100vh - 180px);
+            transition: margin-left .5s; /* For pushing content */
+        }
+
+        body.sidebar-open main {
+            margin-left: 250px; /* Pushes content to the right when sidebar is open */
+        }
+
+
+        /* Footer Styles */
+        footer {
+            background-color: #0056b3;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Basic styling for content within blocks */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: #004085;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-primary:hover {
+            background-color: #004085;
+            border-color: #004085;
+        }
+        /* --- EMBEDDED CSS END --- */
+    </style>
 </head>
 <body>
 
     <header class="main-header">
         <div class="header-logo-container">
-            {# Make sure 'school_logo.png' exists in core/static/core/images/ #}
             <img src="{% static 'core/images/school_logo.png' %}" alt="School Logo" class="header-logo-img">
-<h1 class="site-title-link">ROYAL BEES SCHOOLS</h1>
+            <h1 class="site-title-link"><a href="{% url 'home' %}">ROYAL BEES SCHOOLS</a></h1>
         </div>
 
-        <nav class="main-nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
-                <li class="nav-item"><a href="{% url 'about' %}">About Us</a></li>
-                <li class="nav-item"><a href="{% url 'academics_overview' %}">Academics</a></li>
-                <li class="nav-item"><a href="{% url 'admissions' %}">Admissions</a></li>
-                <li class="nav-item"><a href="{% url 'news_list' %}">News</a></li>
-                <li class="nav-item"><a href="{% url 'event_list' %}">Events</a></li>
-                {# Added Gallery Page Link #}
-                <li class="nav-item"><a href="{% url 'gallery' %}">Gallery</a></li>
-                <li class="nav-item"><a href="{% url 'results:teacher_search_student' %}">Teacher Score Entry</a></li>
-                <li class="nav-item"><a href="{% url 'results:check_results' %}">Check Results</a></li>
-                {# FIX APPLIED HERE: Changed 'contact' to 'contact_us' #}
-                <li class="nav-item"><a href="{% url 'contact_us' %}">Contact Us</a></li>
-            </ul>
-        </nav>
+        {# Hamburger button (always displayed now) #}
+        <button class="hamburger" id="openSidebarBtn" aria-label="Open navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
+
+    {# Sidebar menu (the only navigation) #}
+    <div id="sidebar-menu" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" id="closeSidebarBtn">&times;</a>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="nav-item"><a href="{% url 'about' %}">About Us</a></li>
+            <li class="nav-item"><a href="{% url 'academics_overview' %}">Academics</a></li>
+            <li class="nav-item"><a href="{% url 'admissions' %}">Admissions</a></li>
+            <li class="nav-item"><a href="{% url 'news_list' %}">News</a></li>
+            <li class="nav-item"><a href="{% url 'event_list' %}">Events</a></li>
+            <li class="nav-item"><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li class="nav-item"><a href="{% url 'results:teacher_search_student' %}">Teacher Score Entry</a></li>
+            <li class="nav-item"><a href="{% url 'results:check_results' %}">Check Results</a></li>
+            <li class="nav-item"><a href="{% url 'contact_us' %}">Contact Us</a></li>
+        </ul>
+    </div>
 
     <main>
         {% block content %}
@@ -54,23 +241,56 @@
         <p>&copy; {% now "Y" %} ROYAL BEES SCHOOLS. All rights reserved.</p>
     </footer>
 
-    {# --- GLOBAL JAVASCRIPT LIBRARIES - LOADED DIRECTLY IN BASE.HTML --- #}
-    {# jQuery must be loaded FIRST #}
+    {# Global JavaScript Libraries #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    {# Bootstrap JS (Popper.js is a dependency for Bootstrap 4, then Bootstrap JS) #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
-
-    {# Waypoints and Counter-Up (if used globally, otherwise move to specific templates) #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
 
-    {# Your custom global script.js #}
+    {# Your custom global script.js (if any, keep this if it has other functionalities) #}
     <script src="{% static 'core/js/script.js' %}"></script>
 
-    {# --- BLOCK FOR PAGE-SPECIFIC JAVASCRIPT --- #}
-    {# Scripts placed here will be appended to the global scripts (e.g., Lightbox JS for gallery page) #}
+    {# --- INLINE JAVASCRIPT FOR SIDEBAR TOGGLE --- #}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar-menu');
+            const openBtn = document.getElementById('openSidebarBtn');
+            const closeBtn = document.getElementById('closeSidebarBtn');
+            const body = document.body;
+
+            openBtn.addEventListener('click', function() {
+                sidebar.classList.add('active');
+                body.classList.add('sidebar-open');
+            });
+
+            closeBtn.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+                body.classList.remove('sidebar-open');
+            });
+
+            // Close sidebar if a link is clicked
+            const navLinks = sidebar.querySelectorAll('.nav-item a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    sidebar.classList.remove('active');
+                    body.classList.remove('sidebar-open');
+                });
+            });
+
+            // Optional: Close sidebar if clicked outside of it
+            // document.addEventListener('click', function(event) {
+            //     if (sidebar.classList.contains('active') &&
+            //         !sidebar.contains(event.target) &&
+            //         !openBtn.contains(event.target)) {
+            //         sidebar.classList.remove('active');
+            //         body.classList.remove('sidebar-open');
+            //     }
+            // });
+        });
+    </script>
+    {# --- END INLINE JAVASCRIPT --- #}
+
     {% block extra_js %}{% endblock %}
 </body>
 </html>

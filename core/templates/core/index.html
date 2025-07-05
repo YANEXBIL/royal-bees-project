@@ -46,11 +46,14 @@
             opacity: 0;
             padding: 0;
             margin: 0;
+            white-space: nowrap; /* Prevent wrapping on desktop, manage with media query */
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         /* Calculate new animation duration: Let's aim for 5-6 seconds per message.
-           With 6 messages, total animation will be 6 * 6 = 36 seconds.
-           Each message will appear for about 6 seconds.
+            With 6 messages, total animation will be 6 * 6 = 36 seconds.
+            Each message will appear for about 6 seconds.
         */
         .rotating-banner .message:nth-child(1) {
             animation: textSlide 36s infinite;
@@ -87,6 +90,186 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+
+        /* Hero section styling */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{% static 'core/images/Rimages/hero_image.jpg' %}") no-repeat center center;
+            background-size: cover;
+            min-height: 500px; /* Adjust height as needed */
+            margin-bottom: 30px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5em; /* Larger font for desktop */
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-section .lead {
+            font-size: 1.5em;
+        }
+
+        /* Quick links styling */
+        .quick-link-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: none;
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2) !important;
+        }
+
+        .quick-link-card .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .quick-link-card i {
+            color: #0056b3 !important; /* School primary color */
+        }
+        .quick-link-card h5 {
+            color: #004085 !important;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Testimonials styling */
+        .testimonial-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            min-height: 180px; /* Ensure consistent height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .testimonial-card p.lead {
+            font-size: 1.1em;
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .testimonial-card footer {
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #0056b3; /* Make controls visible */
+            border-radius: 50%;
+            padding: 10px;
+        }
+        .carousel-indicators li {
+            background-color: #0056b3; /* Make indicators visible */
+        }
+
+        /* Call to Action section */
+        .cta-enrollment {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.8)), url("{% static 'core/images/Rimages/cta_bg.jpg' %}") no-repeat center center;
+            background-size: cover;
+            padding: 80px 20px;
+        }
+
+        .cta-enrollment h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-enrollment .lead {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        /* --- RESPONSIVENESS ADJUSTMENTS --- */
+        @media (max-width: 768px) { /* Tablets and larger phones */
+            /* Rotating Banner */
+            .rotating-banner {
+                height: auto;
+                padding: 8px 10px;
+            }
+            .rotating-banner .message {
+                font-size: 0.9em;
+                white-space: normal;
+            }
+
+            /* Hero Section */
+            .hero-section {
+                min-height: 400px;
+                padding: 60px 20px;
+            }
+            .hero-section h1 {
+                font-size: 2em;
+            }
+            .hero-section .lead {
+                font-size: 1.1em;
+            }
+            .hero-section .btn-lg {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+
+            /* About Us Section */
+            .about-us-section img {
+                margin-bottom: 20px;
+            }
+            .about-us-section h2 {
+                font-size: 1.8em;
+            }
+            .about-us-section .lead {
+                font-size: 1em;
+            }
+
+            /* CTA Section */
+            .cta-enrollment {
+                padding: 50px 15px;
+            }
+            .cta-enrollment h2 {
+                font-size: 1.8em;
+            }
+            .cta-enrollment .lead {
+                font-size: 1em;
+            }
+            .cta-enrollment .btn-lg {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+
+        /* This media query will ensure 2 columns for phones (screens up to 575.98px) */
+        @media (max-width: 575.98px) { /* Extra small devices (portrait phones) */
+            .rotating-banner .message {
+                font-size: 0.85em;
+            }
+            .hero-section h1 {
+                font-size: 1.8em;
+            }
+            .hero-section .lead {
+                font-size: 1em;
+            }
+            .cta-enrollment h2 {
+                font-size: 1.6em;
+            }
+
+            /* Force 2 cards per row on extra small screens */
+            .quick-links .col-lg-3,
+            .quick-links .col-md-4,
+            .quick-links .col-sm-6,
+            .news-events-section .col-lg-4,
+            .news-events-section .col-md-6,
+            .news-events-section .col-sm-6 {
+                flex: 0 0 50%; /* Each takes 50% width */
+                max-width: 50%;
+            }
+        }
     </style>
 
     {# --- START Rotating Welcome Banner (Homepage Only) --- #}
@@ -114,7 +297,8 @@
         <div class="container">
             <h2 class="text-center mb-5">Discover More</h2>
             <div class="row text-center">
-                <div class="col-md-3 col-sm-6 mb-4">
+                {# Quick-links columns: col-lg-3 for 4 per row (desktop), col-md-4 for 3 per row (tablet), col-6 for 2 per row (all screens smaller than md) #}
+                <div class="col-lg-3 col-md-4 col-6 mb-4">
                     <a href="{% url 'about' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
                         <div class="card-body">
                             <i class="fas fa-school fa-3x mb-3 text-warning"></i>
@@ -122,7 +306,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4">
+                <div class="col-lg-3 col-md-4 col-6 mb-4">
                     <a href="{% url 'academics_overview' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
                         <div class="card-body">
                             <i class="fas fa-book-open fa-3x mb-3 text-warning"></i>
@@ -130,7 +314,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4">
+                <div class="col-lg-3 col-md-4 col-6 mb-4">
                     <a href="{% url 'admissions' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
                         <div class="card-body">
                             <i class="fas fa-user-plus fa-3x mb-3 text-warning"></i>
@@ -138,7 +322,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4">
+                <div class="col-lg-3 col-md-4 col-6 mb-4">
                     <a href="{% url 'news_list' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
                         <div class="card-body">
                             <i class="fas fa-bullhorn fa-3x mb-3 text-warning"></i>
@@ -146,7 +330,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4">
+                <div class="col-lg-3 col-md-4 col-6 mb-4">
                     <a href="{% url 'contact_us' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
                         <div class="card-body">
                             <i class="fas fa-headset fa-3x mb-3 text-warning"></i>
@@ -154,7 +338,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4">
+                <div class="col-lg-3 col-md-4 col-6 mb-4">
                     <a href="{% url 'gallery' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
                         <div class="card-body">
                             <i class="fas fa-images fa-3x mb-3 text-warning"></i>
@@ -162,7 +346,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4">
+                <div class="col-lg-3 col-md-4 col-6 mb-4">
                     <a href="{% url 'event_list' %}" class="card quick-link-card h-100 shadow-sm text-decoration-none">
                         <div class="card-body">
                             <i class="fas fa-calendar-day fa-3x mb-3 text-warning"></i>
@@ -194,9 +378,9 @@
         <div class="container">
             <h2 class="text-center mb-5">Latest News & Upcoming Events</h2>
             <div class="row g-4">
-                {# Dynamically generate Latest News cards #}
+                {# News/events columns: col-lg-4 for 3 per row (desktop), col-md-6 for 2 per row (tablet), col-6 for 2 per row (all screens smaller than md) #}
                 {% for news_item in latest_news %}
-                <div class="col-md-6 col-lg-4">
+                <div class="col-lg-4 col-md-6 col-6 mb-4">
                     <div class="card h-100 shadow-sm">
                         {# Adjust image path if your NewsItem model has an 'image' field #}
                         <img src="{% static 'core/images/default_news.jpg' %}" class="card-img-top" alt="{{ news_item.title }}">
@@ -218,7 +402,7 @@
 
                 {# Dynamically generate Upcoming Events cards #}
                 {% for event_item in upcoming_events %}
-                <div class="col-md-6 col-lg-4">
+                <div class="col-lg-4 col-md-6 col-6 mb-4">
                     <div class="card h-100 shadow-sm">
                         {# Adjust image path if your Event model has an 'image' field #}
                         <img src="{% static 'core/images/default_event.jpg' %}" class="card-img-top" alt="{{ event_item.title }}">
